@@ -1,0 +1,22 @@
+@extends('layouts.app')
+
+@section('content')
+
+    <x-breadcrumb parentPageTitle="All {{modelName}}" parentPageUrl="{{route('{{modelNamePluralKebabCase}}.index')}}"
+                  currentPageTitle="Edit {{modelName}}">
+    </x-breadcrumb>
+
+    <div class="card">
+        <div class="card-header"><h2 class="lead text-center">Update {{modelName}}</h2></div>
+        <div class="card-body">
+
+            <form action="{{route('{{modelNamePluralKebabCase}}.update', ${{modelNameSingularLowerCase}}->id)}}" method= "POST" enctype="multipart/form-data">
+                @csrf
+                @method('PATCH')
+                    {{fieldsForEdit}}
+                    <button class="btn btn-primary" type="submit">Update</button>
+            </form>
+        </div>
+    </div>
+
+@endsection

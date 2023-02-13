@@ -1,0 +1,22 @@
+@extends('layouts.app')
+
+@section('content')
+
+    <x-breadcrumb parentPageTitle="All {{modelName}}" parentPageUrl="{{route('{{modelNamePluralKebabCase}}.index')}}"
+                  currentPageTitle="Add New {{modelName}}">
+    </x-breadcrumb>
+
+    <div class="card">
+        <div class="card-header"><h2 class="lead text-center">Create a New {{modelName}}</h2></div>
+        <div class="card-body">
+
+            <form action="{{route('{{modelNamePluralKebabCase}}.store')}}" method= "POST" enctype="multipart/form-data">
+                @csrf
+                    {{fieldsForCreate}}
+                    <button class="btn btn-primary" type="submit">Create</button>
+            </form>
+
+        </div>
+    </div>
+
+@endsection
